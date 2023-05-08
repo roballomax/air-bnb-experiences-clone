@@ -1,0 +1,78 @@
+/*Mixins*/
+.card-status-before(@content) {
+    content: @content;
+    position: absolute;
+    z-index: 2;
+    color: #000;
+    font-size: .8rem;
+    font-weight: 300;
+    text-align: center;
+    padding: 5px 6px;
+    background-color: #fff;
+    border-radius: 2px;
+    top: 10px;
+    left: 10px;
+    min-width: 60px;
+}
+
+.carrocel-card {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    width: 250px;
+    position: relative;
+    z-index: 1;
+    margin-right: 25px;
+
+    > .card-image {
+        width: 100%;
+    }
+
+    &.sold-out::before {
+        .card-status-before('SOLD OUT')
+    }
+
+    &.online::before {
+        .card-status-before('ONLINE')
+    }
+
+    > .evaluation-group {
+        display: flex;
+        font-weight: 300;
+        justify-content: flex-start;
+        position: relative;
+        align-items: center;
+        color: #918E9B;
+        font-size: .9rem;
+        padding: 5px 0;
+
+        > span {
+            margin-left: 5px;
+        }
+
+        > .eavluation-star {
+            width: 14px;
+            height: 14px;
+            // flex-grow: 1;
+        }
+
+        > .evaluation-note {
+            color: #222;
+        }
+
+        > .evaluation-place {
+            position: relative;
+            margin-left: 10px;
+            &::before {
+                content: '.';
+                position: absolute;
+                top: -7px;
+                left: -7px;
+                font-weight: 600;
+                font-size: 1rem;
+                color: #222;
+            }
+        }
+    }
+
+}
